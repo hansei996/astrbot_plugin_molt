@@ -1,0 +1,28 @@
+name: astrbot_plugin_molt
+display_name: Molt 蜕壳 · 控制面
+author: hansei996
+version: 0.1.0
+desc: |-
+  让 AstrBot 成为一个"可以交出自己"的壳。
+
+  它提供两样东西：
+  1. 四个控制面端点（/status /drain /resume /checkpoint），让外部程序可以在
+     不杀死进程的前提下让机器人"停止对外说话"，复核它真的安静了，然后再让它开口。
+  2. 一条聊天指令 `/molt go` → `/molt confirm`，让人可以在 QQ 里直接触发一次
+     跨机迁徙（需要配合 molt 本体与账本，见 https://github.com/hansei996/molt）。
+
+  装它本身不会让机器人搬家，也不会改变任何现有行为：配置文件不存在时，
+  指令层默认关闭，四个端点只报告状态。
+
+  设计上只碰 AstrBot 的公开接缝：context.platform_manager 与 context.register_web_api。
+repo: https://github.com/hansei996/astrbot_plugin_molt
+astrbot_version: ">=4.24.0"
+support_platforms:
+  - qq_official
+  - aiocqhttp
+  - weixin_oc
+  - telegram
+tags:
+  - 迁徙
+  - 优雅停机
+  - 控制面
