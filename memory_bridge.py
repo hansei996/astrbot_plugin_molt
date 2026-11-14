@@ -14,7 +14,7 @@
 - `user_message` —— 主人说的；
 - `bot_observed_activity` —— **它自己观察到的**（合同里 source_kind 固定为 `observed`，evidence_level `L2`）。
 
-"我落在 DESKTOP-H2KGIAO，工作目录是 G:\\molt-fish\\data" 本来就是它能观察到的事实
+"我落在 DESKTOP-ABCD1234，工作目录是 G:\\molt-fish\\data" 本来就是它能观察到的事实
 （它在 QQ 里自己就这么报过）。写进 `bot_observed_activity`，主语是它、来源是观察，
 不需要冒充任何人。
 

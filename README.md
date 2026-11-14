@@ -47,7 +47,7 @@
   "success": true,
   "plugin": "astrbot_plugin_molt",
   "plugin_version": "0.1.0",
-  "host": "UGREEN-776B",
+  "host": "nas-host",
   "platforms": {
     "connected": 1,
     "connected_ids": ["default_1234567890"],
