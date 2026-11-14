@@ -9,6 +9,15 @@
 > 装它本身**不会**让机器人搬家，也不改变任何现有行为。
 > 配置文件不存在时，指令层是关闭的，四个端点只报告状态。
 
+## 它长什么样
+
+装了它、配好 `molt_command.json` 之后，在 QQ 里就是这样（真实截图，不是示意图）：
+
+![在 QQ 里触发一次跨机迁徙](docs/qq-handoff-2026-11-14.png)
+
+最后那段是重点：机器人在新机器上**自己**报出了主机名、工作目录、网卡地址、盘符。
+那不是脚本打印的 —— 是它在新身体里读出来再说的。
+
 ## 它解决什么问题
 
 要让一个机器人从 NAS 搬到另一台机器，最直接的办法是 `docker kill`。
@@ -30,6 +39,31 @@
 
 `/status` 里的 `speaking` 是唯一该被信任的结论字段 —— 别自己从 `connected` 推。
 推错了会让两只机器人同时在线，而这种错误在日志里看不出来（两条都"正常运行"）。
+
+### 一个真实的 `/status` 响应
+
+```json
+{
+  "success": true,
+  "plugin": "astrbot_plugin_molt",
+  "plugin_version": "0.1.0",
+  "host": "UGREEN-776B",
+  "platforms": {
+    "connected": 1,
+    "connected_ids": ["default_1906405747"],
+    "enabled_in_config": [{"id": "default_1906405747", "type": "qq_official"}],
+    "drained": [],
+    "has_drained": false,
+    "local_only": ["webchat"]
+  },
+  "wal": {"databases": [], "total_wal_bytes": 0},
+  "speaking": true
+}
+```
+
+`local_only: ["webchat"]` 是刻意分出来的：WebUI 的聊天窗每个实例都有，
+它既不是"对外说话"，也无法被 `resume` 重建 —— 算进 `speaking` 就等于 `speaking` 恒真，
+而**一个永远为真的判据不能当判据用**。
 
 ## 聊天指令（可选，默认关闭）
 
