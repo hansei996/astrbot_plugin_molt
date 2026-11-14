@@ -50,8 +50,8 @@
   "host": "UGREEN-776B",
   "platforms": {
     "connected": 1,
-    "connected_ids": ["default_1906405747"],
-    "enabled_in_config": [{"id": "default_1906405747", "type": "qq_official"}],
+    "connected_ids": ["default_1234567890"],
+    "enabled_in_config": [{"id": "default_1234567890", "type": "qq_official"}],
     "drained": [],
     "has_drained": false,
     "local_only": ["webchat"]
@@ -89,6 +89,8 @@
 /molt go        →  搬去 <target>？120 秒内回 /molt confirm 我就动身
 /molt confirm   →  好，我走了
 /molt status    →  账本现在是第几代、有没有人在搬家
+/molt where     →  我现在在哪台机器上（和 status 是同一个命令，
+                   回的时候会带上「我现在在 <主机名>」和每个壳的心跳）
 /molt cancel    →  取消了，我不搬
 ```
 
